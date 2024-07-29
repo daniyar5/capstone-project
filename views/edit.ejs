@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+<div class="edit">
+    <p class="title-edit">Edit post</p>
+    <form name="editForm" action="/update" method="POST">
+        <input type="hidden" name="index" value="<%= reqIndex %>">
+        <input type="text" name="editPost" value="<%= postContent %>">
+        <input type="submit" value="Update">
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

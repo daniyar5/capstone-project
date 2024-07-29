@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+
+<div class="new">
+    <p class="title">My blog</p>
+    <form action="/" method="POST">
+        <input type="text" name="newPost"  placeholder="Write something...">
+        <input type="submit" value="Post">
+    </form>
+</div>
+
+<% if (mylist.length === 0) {%>
+    <div class="window">
+        <div class="inner-window">
+            <p>You don't have any posts yet.</p>
+        </div>
+    </div>
+<% } else { %>
+    <div class="posts">
+        <% for (var i = mylist.length - 1; i >= 0; i--) {%>
+        <div class="post">
+            <p><%= mylist[i] %></p>
+            <div class="buttons">
+            <form action="/edit" method="POST">
+                <input type="hidden" name="index" value="<%= i %>">
+                <input type="submit" value="Edit">
+            </form>
+            <form action="/delete" method="POST">
+                <input type="hidden" name="index" value="<%= i %>">
+                <input type="submit" value="Delete">
+            </form>
+            </div>
+        </div>
+        <% } %>
+    </div>
+<% } %>
+     
+
+
+
+
+<%- include("partials/footer.ejs") %>
